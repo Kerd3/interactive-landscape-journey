@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Northwind Retreat — Interactive Landscape Journey</title>
+    <meta
+      name="description"
+      content="A scroll-driven journey through a misty mountain valley, from dawn to firelight. A fictional retreat demo built with three.js."
+    />
+    <meta name="theme-color" content="#0b0f1a" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath d='M2 26 12 10l5 8 4-5 9 13z' fill='%23f2c46d'/%3E%3C/svg%3E"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,300&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    <div id="preloader" aria-hidden="true">
+      <div class="preloader__mark">Northwind</div>
+      <div class="preloader__bar"><span></span></div>
+    </div>
+
+    <canvas id="scene" aria-hidden="true"></canvas>
+
+    <div class="progress" aria-hidden="true"><span class="progress__bar"></span></div>
+
+    <header class="site-header">
+      <a class="brand" href="#home" data-nav="home">Northwind <em>Retreat</em></a>
+      <nav class="site-nav" aria-label="Primary">
+        <ul class="nav">
+          <li><a href="#story" data-nav="story">Story</a></li>
+          <li><a href="#about" data-nav="about">About</a></li>
+          <li><a href="#experiences" data-nav="experiences">Experiences</a></li>
+          <li><a href="#contact" data-nav="contact">Contact</a></li>
+        </ul>
+      </nav>
+      <a class="btn btn--small btn--ghost" href="#contact" data-nav="contact">Book a stay</a>
+    </header>
+
+    <nav class="dots" aria-label="Journey sections">
+      <ol>
+        <li><a href="#home" data-nav="home" aria-label="Dawn — Home"><span></span></a></li>
+        <li><a href="#story" data-nav="story" aria-label="Morning — Story"><span></span></a></li>
+        <li><a href="#about" data-nav="about" aria-label="Golden hour — About"><span></span></a></li>
+        <li><a href="#experiences" data-nav="experiences" aria-label="Dusk — Experiences"><span></span></a></li>
+        <li><a href="#contact" data-nav="contact" aria-label="Night — Contact"><span></span></a></li>
+      </ol>
+    </nav>
+
+    <main id="main" tabindex="-1">
+      <!-- 1. Hero · dawn -->
+      <section id="home" class="section section--hero" data-section data-side="left" aria-labelledby="home-title">
+        <div class="section__sticky">
+          <div class="panel panel--hero">
+            <p class="eyebrow" data-reveal>Dawn · 05:42</p>
+            <h1 id="home-title" data-reveal>Where the mist<br />meets the pines.</h1>
+            <p class="lede" data-reveal>
+              Six cabins at the far end of a northern valley. Walk it with us, from first light to firelight.
+            </p>
+            <div class="actions" data-reveal>
+              <a class="btn btn--primary" href="#story" data-nav="story">Begin the journey</a>
+              <a class="btn btn--ghost" href="#contact" data-nav="contact">Book a stay</a>
+            </div>
+          </div>
+          <div class="scroll-hint" aria-hidden="true"><span>Scroll</span><i></i></div>
+        </div>
+      </section>
+
+      <!-- 2. Forest · morning -->
+      <section id="story" class="section" data-section data-side="left" aria-labelledby="story-title">
+        <div class="section__sticky">
+          <div class="panel">
+            <p class="eyebrow" data-reveal>Morning · 08:10</p>
+            <h2 id="story-title" data-reveal>The forest wakes first.</h2>
+            <p data-reveal>
+              Northwind sits at the end of an old logging trail, ninety minutes past the last paved road. Mornings
+              start under spruce and fir, with light falling through in slow gold columns.
+            </p>
+            <p class="hide-sm" data-reveal>
+              There is no lobby and no schedule. Coffee is on the stove by seven, and the trail is yours.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. Lake · golden hour -->
+      <section id="about" class="section" data-section data-side="right" aria-labelledby="about-title">
+        <div class="section__sticky">
+          <div class="panel">
+            <p class="eyebrow" data-reveal>Golden hour · 17:55</p>
+            <h2 id="about-title" data-reveal>A lake that holds the sky.</h2>
+            <ul class="features">
+              <li data-reveal>
+                <strong>Six cabins, spaced for silence</strong>
+                <span>Each has its own stretch of shoreline and a dock for the evening swim.</span>
+              </li>
+              <li data-reveal>
+                <strong>Cooked over wood</strong>
+                <span>Dinners from the valley's farms, served on the porch as the light turns.</span>
+              </li>
+              <li data-reveal>
+                <strong>Nothing to plug in</strong>
+                <span>Solar power, no signal, and a shelf of well-thumbed books.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Ridge · dusk -->
+      <section id="experiences" class="section" data-section data-side="left" aria-labelledby="exp-title">
+        <div class="section__sticky">
+          <div class="panel panel--wide">
+            <p class="eyebrow" data-reveal>Dusk · 19:30</p>
+            <h2 id="exp-title" data-reveal>Up on the ridge.</h2>
+            <div class="cards">
+              <article class="card" data-reveal data-tilt>
+                <span class="card__num">01</span>
+                <div>
+                  <h3>Ridge walks</h3>
+                  <p>A guided 6 km loop to the overlook, timed for sunset.</p>
+                </div>
+              </article>
+              <article class="card" data-reveal data-tilt>
+                <span class="card__num">02</span>
+                <div>
+                  <h3>Cold-water swims</h3>
+                  <p>Morning dips, with a wood-fired sauna waiting on the dock.</p>
+                </div>
+              </article>
+              <article class="card" data-reveal data-tilt>
+                <span class="card__num">03</span>
+                <div>
+                  <h3>Night sky sessions</h3>
+                  <p>Telescopes, blankets and a guide who knows the stars.</p>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Camp · night -->
+      <section id="contact" class="section section--last" data-section data-side="right" aria-labelledby="contact-title">
+        <div class="section__sticky">
+          <div class="panel">
+            <p class="eyebrow" data-reveal>Night · 22:15</p>
+            <h2 id="contact-title" data-reveal>Save a place by the fire.</h2>
+            <p class="hide-sm" data-reveal>Tell us when you'd like to come. We'll reply within two days.</p>
+            <form id="contact-form" class="form" data-reveal>
+              <div class="form__row">
+                <label>
+                  <span>Name</span>
+                  <input name="name" type="text" autocomplete="name" required />
+                </label>
+                <label>
+                  <span>Email</span>
+                  <input name="email" type="email" autocomplete="email" required />
+                </label>
+              </div>
+              <label>
+                <span>Message</span>
+                <textarea name="message" rows="3" required></textarea>
+              </label>
+              <div class="form__foot">
+                <button class="btn btn--primary" type="submit">Send request</button>
+                <p id="form-status" class="form__status" role="status" aria-live="polite"></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>
+        <strong>Northwind Retreat</strong> is a fictional brand. This is a design demo: the places, copy and form are
+        placeholders, and nothing you type is sent anywhere.
+      </p>
+      <p>Landscape generated in code with three.js.</p>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
